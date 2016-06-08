@@ -1,3 +1,7 @@
 language: elixir
 elixir:
   - 1.2.4
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database authable_test;' -U postgres
