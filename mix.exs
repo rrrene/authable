@@ -9,6 +9,8 @@ defmodule Authable.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      aliases: aliases,
+     description: description,
+     package: package,
      deps: deps]
   end
 
@@ -52,5 +54,20 @@ defmodule Authable.Mixfile do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"]
     ]
+  end
+
+  defp description do
+    """
+    OAuth2 Provider implementation objects and helpers using `ecto` and
+    `postgress` for any `elixir` application.
+    """
+  end
+
+  defp package do
+    [name: :authable,
+     files: ["lib", "web", "priv", "mix.exs", "README.md"],
+     maintainers: ["Mustafa Turan"],
+     licenses: ["MIT"],
+     links: %{"GitHub" => "https://github.com/mustafaturan/authable"}]
   end
 end
