@@ -37,6 +37,7 @@ defmodule Authable.Token do
     model
     |> cast(params, @required_fields, @optional_fields)
     |> put_token_value
+    |> unique_constraint(:value, name: :tokens_value_name_index)
   end
 
   def authorization_code_changeset(model, params \\ :empty) do

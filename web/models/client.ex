@@ -37,6 +37,7 @@ defmodule Authable.Client do
     |> cast(params, @required_fields, @optional_fields)
     |> validate_length(:name, min: 4, max: 32)
     |> validate_format(:name, ~r/\A([a-zA-Z]+)([0-9a-zA-Z]*)\z/i)
+    |> unique_constraint(:name)
     |> put_secret
   end
 

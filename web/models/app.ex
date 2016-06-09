@@ -33,5 +33,6 @@ defmodule Authable.App do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> unique_constraint(:client_id, name: :apps_user_id_client_id_index)
   end
 end
