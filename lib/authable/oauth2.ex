@@ -3,6 +3,7 @@ defmodule Authable.OAuth2 do
   OAut2 authorization strategy router
   """
 
+  import Ecto.Query, only: [where: 2]
   alias Authable.AuthorizationCodeGrantType
   alias Authable.ClientCredentialsGrantType
   alias Authable.PasswordGrantType

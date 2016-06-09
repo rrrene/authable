@@ -3,6 +3,7 @@ defmodule Authable.OAuth2Test do
   use Authable.Rollbackable
   use Authable.RepoCase
   import Authable.Factory
+  import Ecto.Query, only: [where: 2]
   alias Authable.OAuth2, as: OAuth2
   alias Authable.SuspiciousActivityError, as: SuspiciousActivityError
 
@@ -66,7 +67,10 @@ defmodule Authable.OAuth2Test do
       client_id: client.id
     })
     OAuth2.revoke_app_authorization(resource_owner, %{"id" => app.id})
-    assert Enum.count(@repo.all(@token_store, user_id: resource_owner.id)) == 0
+    tokens = @token_store
+    |> where(user_id: ^resource_owner.id)
+    |> @repo.all
+    assert Enum.count(tokens) == 0
     assert is_nil(@repo.get(@app, app.id))
   end
 end
