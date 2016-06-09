@@ -1,6 +1,6 @@
 # Authable
 
-OAuth2 Provider implementation objects and helpers using `ecto` and `postgress` for any `elixir` application.
+OAuth2 Provider implementation modules and helpers using `ecto` and `postgress` for any `elixir` application.
 
 ## Installation
 
@@ -9,7 +9,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
   1. Add authable to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:authable, "~> 0.2.0"}]
+          [{:authable, "~> 0.2.1"}]
         end
 
   2. Ensure authable is started before your application:

@@ -3,7 +3,7 @@ defmodule Authable.Mixfile do
 
   def project do
     [app: :authable,
-     version: "0.2.0",
+     version: "0.2.1",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
      build_embedded: Mix.env == :prod,
@@ -58,7 +58,7 @@ defmodule Authable.Mixfile do
 
   defp description do
     """
-    OAuth2 Provider implementation objects and helpers using `ecto` and
+    OAuth2 Provider implementation modules and helpers using `ecto` and
     `postgress` for any `elixir` application.
     """
   end
