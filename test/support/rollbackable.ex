@@ -12,7 +12,7 @@ defmodule Authable.Rollbackable do
     end
   end
 
-  setup tags do
+  setup do
     # Wrap this case in a transaction
     Ecto.Adapters.SQL.begin_test_transaction(@repo)
 

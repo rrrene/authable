@@ -8,7 +8,7 @@ defmodule Authable.BaseGrantType do
   @app Application.get_env(:authable, :app)
   @strategies Application.get_env(:authable, :strategies)
 
-  def authorize(params) do
+  def authorize(_params) do
     raise Authable.NotImplementedError, message: "Not implemented!"
   end
 

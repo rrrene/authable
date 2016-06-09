@@ -44,8 +44,7 @@ defmodule Authable.OAuth2 do
         |> Enum.concat(String.split(app.scope, ","))
         |> Enum.uniq()
         scope = @scopes -- (@scopes -- scope)
-                |> Enum.join(",")
-        @repo.update!(@app.changeset(app, %{scope: scope}))
+        @repo.update!(@app.changeset(app, %{scope: Enum.join(scope, ",")}))
       end
     end
   end
