@@ -53,7 +53,10 @@ defmodule Authable.OAuth2 do
     app = @repo.get_by!(@app, id: params["id"], user_id: user.id)
     @repo.delete!(app)
 
-    tokens = @repo.all(@token, user_id: user.id)
+    tokens = @token
+    |> where(user_id: ^user.id)
+    |> @repo.all
+
     Enum.map(tokens, fn token ->
         if Map.get(token.details, "client_id", "") == app.client_id do
           @repo.delete!(token)
