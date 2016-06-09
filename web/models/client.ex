@@ -23,7 +23,7 @@ defmodule Authable.Client do
     timestamps
   end
 
-  @required_fields ~w(name redirect_uri)
+  @required_fields ~w(name redirect_uri user_id)
   @optional_fields ~w(settings)
 
   @doc """

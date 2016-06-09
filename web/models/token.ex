@@ -25,7 +25,7 @@ defmodule Authable.Token do
   end
 
   @required_fields ~w(user_id)
-  @optional_fields ~w(name details)
+  @optional_fields ~w(name expires_at details)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
