@@ -4,10 +4,6 @@ defmodule Authable.OAuth2 do
   """
 
   import Ecto.Query, only: [where: 2]
-  alias Authable.AuthorizationCodeGrantType
-  alias Authable.ClientCredentialsGrantType
-  alias Authable.PasswordGrantType
-  alias Authable.RefreshTokenGrantType
 
   @repo Application.get_env(:authable, :repo)
   @token Application.get_env(:authable, :token_store)
