@@ -27,7 +27,7 @@ defmodule Authable.AuthorizationCodeGrantType do
       user = @repo.get!(@resource_owner, token.user_id)
       app_authorized?(user.id, client_id)
       access_token = create_oauth2_tokens(user, grant_type, client_id,
-                       token.details["scope"])
+                       token.details["scope"], redirect_uri)
       @repo.delete!(token)
     end
     access_token
