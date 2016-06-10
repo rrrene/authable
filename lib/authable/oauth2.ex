@@ -60,7 +60,7 @@ defmodule Authable.OAuth2 do
   end
 
   defp strategy_check(grant_type) do
-    unless @strategies[String.to_atom(grant_type)] do
+    unless Map.has_key?(@strategies, String.to_atom(grant_type)) do
       raise Authable.SuspiciousActivityError,
         message: "Strategy for '#{grant_type}' is not enabled!"
     end

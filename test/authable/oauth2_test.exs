@@ -10,7 +10,7 @@ defmodule Authable.OAuth2Test do
   @redirect_uri "https://xyz.com/rd"
   @scopes "read"
 
-  test "raise when strategy not enabled" do
+  test "raise when strategy not exist" do
     params = %{"grant_type" => "urn"}
     assert_raise SuspiciousActivityError, fn -> OAuth2.authorize(params) end
   end
