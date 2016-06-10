@@ -26,7 +26,7 @@ defmodule Authable.OAuth2Test do
     refute is_nil(app)
   end
 
-  test "resource_owner authorize app update scopes for a client" do
+  test "resource_owner re-authorize app with new scopes for a client" do
     new_scopes = "read,write"
     resource_owner = create(:user)
     client_owner = create(:user)
@@ -40,6 +40,21 @@ defmodule Authable.OAuth2Test do
     same_app = OAuth2.authorize_app(resource_owner, params)
     assert app.id == same_app.id
     assert same_app.scope == new_scopes
+  end
+
+  test "resource_owner re-authorize app with old scopes for a client" do
+    resource_owner = create(:user)
+    client_owner = create(:user)
+    client = create(:client, user_id: client_owner.id,
+                    redirect_uri: @redirect_uri)
+    app = create(:app, user_id: resource_owner.id, client_id: client.id,
+                 scope: @scopes)
+
+    params = %{"client_id" => client.id, "redirect_uri" => @redirect_uri,
+               "scope" => @scopes}
+    same_app = OAuth2.authorize_app(resource_owner, params)
+    assert app.id == same_app.id
+    assert same_app.scope == @scopes
   end
 
   test "does not allow to change redirect_uri when authorize app" do

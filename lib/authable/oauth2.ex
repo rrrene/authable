@@ -22,7 +22,6 @@ defmodule Authable.OAuth2 do
                   redirect_uri: params["redirect_uri"])
     app = @repo.get_by(@app, user_id: user.id, client_id: params["client_id"])
 
-
     if is_nil(app) do
       @repo.insert!(@app.changeset(%@app{}, %{
         user_id: user.id,
@@ -37,6 +36,8 @@ defmodule Authable.OAuth2 do
         |> Enum.uniq()
         scope = @scopes -- (@scopes -- scope)
         @repo.update!(@app.changeset(app, %{scope: Enum.join(scope, ",")}))
+      else
+        app
       end
     end
   end
