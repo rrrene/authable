@@ -18,12 +18,7 @@ defmodule Authable.OAuth2 do
 
   def authorize(params) do
     strategy_check(params["grant_type"])
-    case params["grant_type"] do
-      "authorization_code" -> AuthorizationCodeGrantType.authorize(params)
-      "client_credentials" -> ClientCredentialsGrantType.authorize(params)
-      "password" -> PasswordGrantType.authorize(params)
-      "refresh_token" -> RefreshTokenGrantType.authorize(params)
-    end
+    @strategies[String.to_atom(params["grant_type"])].authorize(params)
   end
 
   def authorize_app(user, params) do

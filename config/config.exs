@@ -21,10 +21,10 @@ config :authable,
     session_token: 30 * 24 * 3600
   },
   strategies: %{
-    authorization_code: true,
-    client_credentials: true,
-    password: true,
-    refresh_token: true
+    authorization_code: Authable.AuthorizationCodeGrantType,
+    client_credentials: Authable.ClientCredentialsGrantType,
+    password: Authable.PasswordGrantType,
+    refresh_token: Authable.RefreshTokenGrantType
   },
   scopes: ~w(read write session)
 

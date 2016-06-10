@@ -4,12 +4,12 @@ OAuth2 Provider implementation modules and helpers using `ecto` and `postgress` 
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+The package can be installed as:
 
   1. Add authable to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:authable, "~> 0.2.2"}]
+          [{:authable, "~> 0.3.0"}]
         end
 
   2. Ensure authable is started before your application:
@@ -33,12 +33,17 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
             session_token: 30 * 24 * 3600
           },
           strategies: %{
-            authorization_code: true,
-            client_credentials: true,
-            password: true,
-            refresh_token: true
+            authorization_code: Authable.AuthorizationCodeGrantType,
+            client_credentials: Authable.ClientCredentialsGrantType,
+            password: Authable.PasswordGrantType,
+            refresh_token: Authable.RefreshTokenGrantType
           },
           scopes: ~w(read write session)
+
+  - If you want to disable a strategy then delete from strategies config.
+
+  - If you want to add a new strategy then add your own module with
+  authorize(params) functions and return a Authable.Token struct.
 
   4. Add database configurations for the `Authable.Repo` on env config files:
 
