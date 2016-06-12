@@ -20,13 +20,14 @@ defmodule Authable.RefreshTokenGrantType do
     token = @repo.get_by(@token_store, value: refresh_token)
     if token && !@token_store.is_expired?(token) &&
        token.details["client_id"] == client_id do
-      client = @repo.get_by!(@client, id: client_id, secret: client_secret)
-      user = @repo.get!(@resource_owner, token.user_id)
-      app_authorized?(user.id, client_id)
-      access_token = create_oauth2_tokens(user, grant_type, client_id,
-                       token.details["scope"])
-      @repo.delete!(token)
-      access_token
+      client = @repo.get_by(@client, id: client_id, secret: client_secret)
+      user = @repo.get(@resource_owner, token.user_id)
+      if client && user && app_authorized?(user.id, client.id) do
+        access_token = create_oauth2_tokens(user, grant_type, client_id,
+          token.details["scope"])
+        @repo.delete!(token)
+        access_token
+      end
     end
   end
 

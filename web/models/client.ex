@@ -5,7 +5,7 @@ defmodule Authable.Client do
 
   use Ecto.Schema
   import Ecto.Changeset
-  alias Authable.CryptUtils, as: CryptUtils
+  alias Authable.CryptUtils
 
   @resource_owner Application.get_env(:authable, :resource_owner)
   @app Application.get_env(:authable, :app)

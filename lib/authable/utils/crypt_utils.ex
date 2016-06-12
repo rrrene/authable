@@ -3,7 +3,7 @@ defmodule Authable.CryptUtils do
   Crypt utilities
   """
 
-  alias Comeonin.Bcrypt, as: Bcrypt
+  alias Comeonin.Bcrypt
 
   def match_password(password, crypted_password) do
     Bcrypt.checkpw(password, crypted_password)

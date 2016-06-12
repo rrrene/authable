@@ -3,7 +3,7 @@ defmodule Authable.BasicAuthentication do
   Basic Authentication authenticate
   """
 
-  alias Authable.CryptUtils, as: CryptUtils
+  alias Authable.CryptUtils
 
   @repo Application.get_env(:authable, :repo)
   @resource_owner Application.get_env(:authable, :resource_owner)

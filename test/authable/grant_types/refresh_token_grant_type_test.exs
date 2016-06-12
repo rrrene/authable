@@ -29,8 +29,6 @@ defmodule Authable.RefreshTokenGrantTypeTest do
   test "fails if app is deleted by resource_owner", %{params: params, app: app} do
     @repo.delete!(app)
 
-    assert_raise Ecto.NoResultsError, fn ->
-      Authable.RefreshTokenGrantType.authorize(params)
-    end
+    assert is_nil(Authable.RefreshTokenGrantType.authorize(params))
   end
 end

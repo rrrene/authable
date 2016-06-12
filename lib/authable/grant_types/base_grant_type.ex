@@ -12,7 +12,7 @@ defmodule Authable.BaseGrantType do
     raise Authable.NotImplementedError, message: "Not implemented!"
   end
 
-  def create_oauth2_tokens(user, grant_type, client_id, scope, redirect_uri \\ :empty) do
+  def create_oauth2_tokens(user, grant_type, client_id, scope, redirect_uri \\ nil) do
     scopes_check(scope)
 
     token_params = %{
@@ -30,21 +30,25 @@ defmodule Authable.BaseGrantType do
       refresh_token_changeset = @token_store.refresh_token_changeset(
         %@token_store{}, token_params
       )
-      refresh_token = @repo.insert!(refresh_token_changeset)
-
-      token_params = token_params |> Map.merge(%{details:
-        Map.put(token_params[:details], :refresh_token, refresh_token.value)}
-      )
+      case @repo.insert(refresh_token_changeset) do
+        {:ok, refresh_token} ->
+          token_params = token_params |> Map.merge(%{details:
+            Map.put(token_params[:details],
+              :refresh_token, refresh_token.value)}
+          )
+      end
     end
 
     access_token_changeset = @token_store.access_token_changeset(
       %@token_store{}, token_params
     )
-    @repo.insert!(access_token_changeset)
+    case @repo.insert(access_token_changeset) do
+      {:ok, access_token} -> access_token
+    end
   end
 
   def app_authorized?(user_id, client_id) do
-    @repo.get_by!(@app, user_id: user_id, client_id: client_id)
+    @repo.get_by(@app, user_id: user_id, client_id: client_id)
   end
 
   defp scopes_check(scopes) do

@@ -5,8 +5,8 @@ defmodule Authable.Token do
 
   use Ecto.Schema
   import Ecto.Changeset
-  alias Timex.Time, as: Time
-  alias Authable.CryptUtils, as: CryptUtils
+  alias Timex.Time
+  alias Authable.CryptUtils
 
   @resource_owner Application.get_env(:authable, :resource_owner)
   @expires_in Application.get_env(:authable, :expires_in)

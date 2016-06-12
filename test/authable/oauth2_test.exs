@@ -4,8 +4,8 @@ defmodule Authable.OAuth2Test do
   use Authable.RepoCase
   import Authable.Factory
   import Ecto.Query, only: [where: 2]
-  alias Authable.OAuth2, as: OAuth2
-  alias Authable.SuspiciousActivityError, as: SuspiciousActivityError
+  alias Authable.OAuth2
+  alias Authable.SuspiciousActivityError
 
   @redirect_uri "https://xyz.com/rd"
   @scopes "read"
@@ -64,8 +64,7 @@ defmodule Authable.OAuth2Test do
                     redirect_uri: @redirect_uri)
     params = %{"client_id" => client.id, "redirect_uri" => "https://xyz.com/nx",
                "scope" => @scopes}
-    assert_raise Ecto.NoResultsError,
-                 fn -> OAuth2.authorize_app(resource_owner, params) end
+    assert is_nil(OAuth2.authorize_app(resource_owner, params))
   end
 
   test "deletes app and user's all client tokens" do

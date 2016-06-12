@@ -42,7 +42,7 @@ defmodule Authable.Mixfile do
       {:secure_random, "~> 0.2"},
       {:ex_machina, "~> 0.6.1", only: :test},
       {:poison, "~> 2.1.0"},
-      {:credo, "~> 0.3", only: [:dev, :test]}
+      {:credo, "~> 0.4", only: [:dev, :test]}
     ]
   end
 

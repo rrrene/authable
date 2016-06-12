@@ -12,7 +12,7 @@ defmodule Authable.AuthorizationCodeGrantType do
   @app Application.get_env(:authable, :app)
 
   def authorize(params) do
-    client = @repo.get_by!(@client, id: params["client_id"], secret:
+    client = @repo.get_by(@client, id: params["client_id"], secret:
       params["client_secret"])
     if client, do: authorize(params["code"], params["redirect_uri"], client.id),
                else: nil
@@ -24,11 +24,12 @@ defmodule Authable.AuthorizationCodeGrantType do
     if token && !@token_store.is_expired?(token) &&
        token.details["redirect_uri"] == redirect_uri &&
        token.details["client_id"] == client_id do
-      user = @repo.get!(@resource_owner, token.user_id)
-      app_authorized?(user.id, client_id)
-      access_token = create_oauth2_tokens(user, grant_type, client_id,
-                       token.details["scope"], redirect_uri)
-      @repo.delete!(token)
+      user = @repo.get(@resource_owner, token.user_id)
+      if user && app_authorized?(user.id, client_id) do
+        access_token = create_oauth2_tokens(user, grant_type, client_id,
+          token.details["scope"], redirect_uri)
+        @repo.delete!(token)
+      end
     end
     access_token
   end
