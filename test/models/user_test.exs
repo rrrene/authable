@@ -1,4 +1,4 @@
-defmodule Authable.UserTest do
+defmodule Authable.Models.UserTest do
   use Authable.ModelCase
 
   @valid_attrs %{email: "foo@example.com", password: "s3cr3tX.", settings: %{}}

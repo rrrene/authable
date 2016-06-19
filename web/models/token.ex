@@ -1,4 +1,4 @@
-defmodule Authable.Token do
+defmodule Authable.Models.Token do
   @moduledoc """
   Oauth2 token store
   """
@@ -6,7 +6,7 @@ defmodule Authable.Token do
   use Ecto.Schema
   import Ecto.Changeset
   alias Timex.Time
-  alias Authable.CryptUtils
+  alias Authable.Utils.Crypt, as: CryptUtil
 
   @resource_owner Application.get_env(:authable, :resource_owner)
   @expires_in Application.get_env(:authable, :expires_in)
@@ -73,7 +73,7 @@ defmodule Authable.Token do
   end
 
   defp put_token_value(model_changeset) do
-    put_change(model_changeset, :value, CryptUtils.generate_token)
+    put_change(model_changeset, :value, CryptUtil.generate_token)
   end
 
   defp put_token_name(model_changeset, name) do

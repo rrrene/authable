@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.12.0">
-    <title>API Reference – authable v0.3.2</title>
+    <title>API Reference – authable v0.4.0</title>
     <link rel="stylesheet" href="dist/app-88251e7c81.css" />
     
       <link rel="canonical" href="https://hexdocs.pm/authable/api-reference.html" />
@@ -27,7 +27,7 @@
         authable
       </h1>
       <h2 class="sidebar-projectVersion">
-        v0.3.2
+        v0.4.0
       </h2>
     </div>
     
@@ -61,7 +61,7 @@
     <div id="content" class="content-inner">
 
   <h1>
-    <small class="visible-xs">authable v0.3.2</small>
+    <small class="visible-xs">authable v0.4.0</small>
     API Reference
   </h1>
 
@@ -87,58 +87,93 @@
   
 </div>
 <div class="summary-row">
-  <div class="summary-signature"><a href="Authable.App.html">Authable.App</a></div>
-  
-    <div class="summary-synopsis"><p>Installed apps</p>
-</div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature"><a href="Authable.AuthorizationCodeGrantType.html">Authable.AuthorizationCodeGrantType</a></div>
-  
-    <div class="summary-synopsis"><p>AuthorizationCode grant type for OAuth2 Authorization Server</p>
-</div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature"><a href="Authable.BaseGrantType.html">Authable.BaseGrantType</a></div>
-  
-    <div class="summary-synopsis"><p>Base module for OAuth2 grant types</p>
-</div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature"><a href="Authable.BasicAuthentication.html">Authable.BasicAuthentication</a></div>
+  <div class="summary-signature"><a href="Authable.Authentications.Basic.html">Authable.Authentications.Basic</a></div>
   
     <div class="summary-synopsis"><p>Basic Authentication authenticate</p>
 </div>
   
 </div>
 <div class="summary-row">
-  <div class="summary-signature"><a href="Authable.BearerAuthentication.html">Authable.BearerAuthentication</a></div>
+  <div class="summary-signature"><a href="Authable.Authentications.Bearer.html">Authable.Authentications.Bearer</a></div>
   
     <div class="summary-synopsis"><p>Bearer Authentication authenticate</p>
 </div>
   
 </div>
 <div class="summary-row">
-  <div class="summary-signature"><a href="Authable.Client.html">Authable.Client</a></div>
+  <div class="summary-signature"><a href="Authable.Authentications.Session.html">Authable.Authentications.Session</a></div>
   
-    <div class="summary-synopsis"><p>Oauth2 client</p>
+    <div class="summary-synopsis"><p>Session Authentication authenticate</p>
 </div>
   
 </div>
 <div class="summary-row">
-  <div class="summary-signature"><a href="Authable.ClientCredentialsGrantType.html">Authable.ClientCredentialsGrantType</a></div>
+  <div class="summary-signature"><a href="Authable.Authentications.Token.html">Authable.Authentications.Token</a></div>
+  
+    <div class="summary-synopsis"><p>Bearer Authentication authenticate</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Authable.GrantTypes.AuthorizationCode.html">Authable.GrantTypes.AuthorizationCode</a></div>
+  
+    <div class="summary-synopsis"><p>AuthorizationCode grant type for OAuth2 Authorization Server</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Authable.GrantTypes.Base.html">Authable.GrantTypes.Base</a></div>
+  
+    <div class="summary-synopsis"><p>Base module for OAuth2 grant types</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Authable.GrantTypes.ClientCredentials.html">Authable.GrantTypes.ClientCredentials</a></div>
   
     <div class="summary-synopsis"><p>ClientCredentials grant type for OAuth2 Authorization Server</p>
 </div>
   
 </div>
 <div class="summary-row">
-  <div class="summary-signature"><a href="Authable.CryptUtils.html">Authable.CryptUtils</a></div>
+  <div class="summary-signature"><a href="Authable.GrantTypes.Password.html">Authable.GrantTypes.Password</a></div>
   
-    <div class="summary-synopsis"><p>Crypt utilities</p>
+    <div class="summary-synopsis"><p>Password grant type for OAuth2 Authorization Server</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Authable.GrantTypes.RefreshToken.html">Authable.GrantTypes.RefreshToken</a></div>
+  
+    <div class="summary-synopsis"><p>RefreshToken grant type for OAuth2 Authorization Server</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Authable.Models.App.html">Authable.Models.App</a></div>
+  
+    <div class="summary-synopsis"><p>Installed apps</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Authable.Models.Client.html">Authable.Models.Client</a></div>
+  
+    <div class="summary-synopsis"><p>Oauth2 client</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Authable.Models.Token.html">Authable.Models.Token</a></div>
+  
+    <div class="summary-synopsis"><p>Oauth2 token store</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Authable.Models.User.html">Authable.Models.User</a></div>
+  
+    <div class="summary-synopsis"><p>Oauth2 resource owner</p>
 </div>
   
 </div>
@@ -150,20 +185,6 @@
   
 </div>
 <div class="summary-row">
-  <div class="summary-signature"><a href="Authable.PasswordGrantType.html">Authable.PasswordGrantType</a></div>
-  
-    <div class="summary-synopsis"><p>Password grant type for OAuth2 Authorization Server</p>
-</div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature"><a href="Authable.RefreshTokenGrantType.html">Authable.RefreshTokenGrantType</a></div>
-  
-    <div class="summary-synopsis"><p>RefreshToken grant type for OAuth2 Authorization Server</p>
-</div>
-  
-</div>
-<div class="summary-row">
   <div class="summary-signature"><a href="Authable.Repo.html">Authable.Repo</a></div>
   
     <div class="summary-synopsis"><p>Authable Repo</p>
@@ -171,30 +192,9 @@
   
 </div>
 <div class="summary-row">
-  <div class="summary-signature"><a href="Authable.SessionAuthentication.html">Authable.SessionAuthentication</a></div>
+  <div class="summary-signature"><a href="Authable.Utils.Crypt.html">Authable.Utils.Crypt</a></div>
   
-    <div class="summary-synopsis"><p>Session Authentication authenticate</p>
-</div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature"><a href="Authable.Token.html">Authable.Token</a></div>
-  
-    <div class="summary-synopsis"><p>Oauth2 token store</p>
-</div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature"><a href="Authable.TokenAuthentication.html">Authable.TokenAuthentication</a></div>
-  
-    <div class="summary-synopsis"><p>Bearer Authentication authenticate</p>
-</div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature"><a href="Authable.User.html">Authable.User</a></div>
-  
-    <div class="summary-synopsis"><p>Oauth2 resource owner</p>
+    <div class="summary-synopsis"><p>Crypt utilities</p>
 </div>
   
 </div>

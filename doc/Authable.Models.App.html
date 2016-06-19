@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.12.0">
-    <title>Authable.SuspiciousActivityError – authable v0.4.0</title>
+    <title>Authable.Models.App – authable v0.4.0</title>
     <link rel="stylesheet" href="dist/app-88251e7c81.css" />
     
-      <link rel="canonical" href="https://hexdocs.pm/authable/Authable.SuspiciousActivityError.html" />
+      <link rel="canonical" href="https://hexdocs.pm/authable/Authable.Models.App.html" />
     
     <script src="dist/sidebar_items.js"></script>
   </head>
-  <body data-type="exceptions">
+  <body data-type="modules">
 
     <div class="main">
 <button class="sidebar-toggle">
@@ -63,16 +63,14 @@
 
       <h1>
         <small class="visible-xs">authable v0.4.0</small>
-        Authable.SuspiciousActivityError
-        
-          <small>exception</small>
+        Authable.Models.App
         
         
       </h1>
 
       
         <section id="moduledoc" class="docstring">
-          <p>SuspiciousActivityError exception type</p>
+          <p>Installed apps</p>
 
         </section>
       
@@ -94,19 +92,10 @@
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
-    <a href="#exception/1">exception(msg)</a>
+    <a href="#changeset/2">changeset(model, params \\ :empty)</a>
   </div>
   
-    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c:Exception.exception/1</code></p>
-</div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#message/1">message(exception)</a>
-  </div>
-  
-    <div class="summary-synopsis"><p>Callback implementation for <code class="inline">c:Exception.message/1</code></p>
+    <div class="summary-synopsis"><p>Creates a changeset based on the <code class="inline">model</code> and <code class="inline">params</code></p>
 </div>
   
 </div>
@@ -131,53 +120,20 @@
             </a>
             Functions
           </h1>
-          <div class="detail" id="exception/1">
+          <div class="detail" id="changeset/2">
   <div class="detail-header">
-    <a href="#exception/1" class="detail-link" title="Link to this function">
+    <a href="#changeset/2" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
-    <span class="signature">exception(msg)</span>
+    <span class="signature">changeset(model, params \\ :empty)</span>
     
     
   </div>
   
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
-        
-          <pre><code class="elixir">exception(<a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>) :: <a href="http://elixir-lang.org/docs/stable/elixir/Exception.html#t:t/0">Exception.t</a></code></pre>
-        
-          <pre><code class="elixir">exception(<a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) :: <a href="http://elixir-lang.org/docs/stable/elixir/Exception.html#t:t/0">Exception.t</a></code></pre>
-        
-      </div>
-    </div>
-  
   <section class="docstring">
-    <p>Callback implementation for <code class="inline">c:Exception.exception/1</code>.</p>
-
-  </section>
-</div>
-<div class="detail" id="message/1">
-  <div class="detail-header">
-    <a href="#message/1" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
-    </a>
-    <span class="signature">message(exception)</span>
-    
-    
-  </div>
-  
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
-        
-          <pre><code class="elixir">message(<a href="http://elixir-lang.org/docs/stable/elixir/Exception.html#t:t/0">Exception.t</a>) :: <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a></code></pre>
-        
-      </div>
-    </div>
-  
-  <section class="docstring">
-    <p>Callback implementation for <code class="inline">c:Exception.message/1</code>.</p>
+    <p>Creates a changeset based on the <code class="inline">model</code> and <code class="inline">params</code>.</p>
+<p>If no params are provided, an invalid changeset is returned
+with no validation performed.</p>
 
   </section>
 </div>

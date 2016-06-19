@@ -6,7 +6,7 @@ defmodule Authable.OAuth2 do
   import Ecto.Query, only: [where: 2]
 
   @repo Application.get_env(:authable, :repo)
-  @token Application.get_env(:authable, :token_store)
+  @token_store Application.get_env(:authable, :token_store)
   @client Application.get_env(:authable, :client)
   @app Application.get_env(:authable, :app)
   @strategies Application.get_env(:authable, :strategies)
@@ -47,7 +47,7 @@ defmodule Authable.OAuth2 do
     app = @repo.get_by!(@app, id: params["id"], user_id: user.id)
     @repo.delete!(app)
 
-    tokens = @token
+    tokens = @token_store
     |> where(user_id: ^user.id)
     |> @repo.all
 

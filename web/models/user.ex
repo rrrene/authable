@@ -1,11 +1,11 @@
-defmodule Authable.User do
+defmodule Authable.Models.User do
   @moduledoc """
   Oauth2 resource owner
   """
 
   use Ecto.Schema
   import Ecto.Changeset
-  alias Authable.CryptUtils
+  alias Authable.Utils.Crypt, as: CryptUtil
 
   @token_store Application.get_env(:authable, :token_store)
   @client Application.get_env(:authable, :client)
@@ -58,7 +58,7 @@ defmodule Authable.User do
   defp put_password_hash(model_changeset) do
     case model_changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
-        put_change(model_changeset, :password, CryptUtils.salt_password(pass))
+        put_change(model_changeset, :password, CryptUtil.salt_password(pass))
       _ ->
         model_changeset
     end

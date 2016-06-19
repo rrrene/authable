@@ -10,10 +10,10 @@ use Mix.Config
 
 config :authable,
   repo: Authable.Repo,
-  resource_owner: Authable.User,
-  token_store: Authable.Token,
-  client: Authable.Client,
-  app: Authable.App,
+  resource_owner: Authable.Models.User,
+  token_store: Authable.Models.Token,
+  client: Authable.Models.Client,
+  app: Authable.Models.App,
   expires_in: %{
     access_token: 3600,
     refresh_token: 24 * 3600,

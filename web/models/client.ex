@@ -1,11 +1,11 @@
-defmodule Authable.Client do
+defmodule Authable.Models.Client do
   @moduledoc """
   Oauth2 client
   """
 
   use Ecto.Schema
   import Ecto.Changeset
-  alias Authable.CryptUtils
+  alias Authable.Utils.Crypt, as: CryptUtil
 
   @resource_owner Application.get_env(:authable, :resource_owner)
   @app Application.get_env(:authable, :app)
@@ -42,6 +42,6 @@ defmodule Authable.Client do
   end
 
   defp put_secret(model_changeset) do
-    put_change(model_changeset, :secret, CryptUtils.generate_token)
+    put_change(model_changeset, :secret, CryptUtil.generate_token)
   end
 end

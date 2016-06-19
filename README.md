@@ -9,7 +9,7 @@ The package can be installed as:
   1. Add authable to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:authable, "~> 0.3.2"}]
+          [{:authable, "~> 0.4.0"}]
         end
 
   2. Ensure authable is started before your application:
@@ -22,10 +22,10 @@ The package can be installed as:
 
         config :authable,
           repo: Authable.Repo,
-          resource_owner: Authable.User,
-          token_store: Authable.Token,
-          client: Authable.Client,
-          app: Authable.App,
+          resource_owner: Authable.Models.User,
+          token_store: Authable.Models.Token,
+          client: Authable.Models.Client,
+          app: Authable.Models.App,
           expires_in: %{
             access_token: 3600,
             refresh_token: 24 * 3600,
@@ -33,16 +33,16 @@ The package can be installed as:
             session_token: 30 * 24 * 3600
           },
           strategies: %{
-            authorization_code: Authable.AuthorizationCodeGrantType,
-            client_credentials: Authable.ClientCredentialsGrantType,
-            password: Authable.PasswordGrantType,
-            refresh_token: Authable.RefreshTokenGrantType
+            authorization_code: Authable.GrantTypes.AuthorizationCode,
+            client_credentials: Authable.GrantTypes.ClientCredentialsGrantType,
+            password: Authable.GrantTypes.Password,
+            refresh_token: Authable.GrantTypes.RefreshToken
           },
           scopes: ~w(read write session)
 
   If you want to disable a strategy then delete from strategies config.
 
-  If you want to add a new strategy then add your own module with `authorize(params)` function and return a `Authable.Token` struct.
+  If you want to add a new strategy then add your own module with `authorize(params)` function and return a `Authable.Models.Token` struct.
 
   4. Add database configurations for the `Authable.Repo` on env config files:
 
@@ -64,7 +64,7 @@ The package can be installed as:
 
 ### Generic Token Storage
 
-To handle all possible token types, a generic token storage scheme is used for `Authable.Token`. So, it can be used for all OAuth2 tokens and any other token scheme like confirmation token, password recovery tokens, mail list tokens, session tokens and etc...
+To handle all possible token types, a generic token storage scheme is used for `Authable.Models.Token`. So, it can be used for all OAuth2 tokens and any other token scheme like confirmation token, password recovery tokens, mail list tokens, session tokens and etc...
 
       :name, :string # Name of the token
       :value, :string # Value of the token
@@ -78,7 +78,7 @@ To authorize an app `Authable.OAuth2.authorize_app/2` function can be used.
 
 ### Generating Access Token
 
-Authable has 4 grant types (authorization_code, password, client_credentials and refresh_token) to get an access token by default. To extend or use your own grant-type strategy, add your strategy into config and implement `authorize(params)` function and return a `Authable.Token` struct.
+Authable has 4 grant types (authorization_code, password, client_credentials and refresh_token) to get an access token by default. To extend or use your own grant-type strategy, add your strategy into config and implement `authorize(params)` function and return a `Authable.Models.Token` struct.
 
 `Authable.OAuth2.authorize(params)` will automatically determine which strategy to use by grant type. Then it authorize client and returns an access token to make further requests to resource server.
 
@@ -90,7 +90,7 @@ Authable has 2 main authentication patterns,
 1) Basic Authentication header resolver and
 2) Token Authentication, including `Bearer` token and `Session` token.
 
-All authentication patterns return on success a `Authable.User` struct and on all other conditions it returns nil.
+All authentication patterns return on success a `Authable.Models.User` struct and on all other conditions it returns nil.
 
 ## Test
 
