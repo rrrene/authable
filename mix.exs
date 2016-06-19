@@ -3,7 +3,7 @@ defmodule Authable.Mixfile do
 
   def project do
     [app: :authable,
-     version: "0.3.1",
+     version: "0.3.2",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
      build_embedded: Mix.env == :prod,
@@ -42,7 +42,8 @@ defmodule Authable.Mixfile do
       {:secure_random, "~> 0.2"},
       {:ex_machina, "~> 0.6.1", only: :test},
       {:poison, "~> 2.1.0"},
-      {:credo, "~> 0.4", only: [:dev, :test]}
+      {:credo, "~> 0.4", only: [:dev, :test]},
+      {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end
 

@@ -9,7 +9,7 @@ The package can be installed as:
   1. Add authable to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:authable, "~> 0.3.1"}]
+          [{:authable, "~> 0.3.2"}]
         end
 
   2. Ensure authable is started before your application:
