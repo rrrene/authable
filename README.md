@@ -1,4 +1,4 @@
-# Authable
+# Authable [![Deps Status](https://beta.hexfaktor.org/badge/all/github/mustafaturan/authable.svg)](https://beta.hexfaktor.org/github/mustafaturan/authable)
 
 OAuth2 Provider implementation modules and helpers using `ecto` and `postgress` for any `elixir` application.
 
